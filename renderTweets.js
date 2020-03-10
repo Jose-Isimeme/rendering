@@ -1,11 +1,22 @@
 
 function renderTweets(tweets) {
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(tweets)}</code>
-        </div>
-    `
-}
+    let renderInfo = tweets.map(tweet =>{ 
+        return`<div class="card px-3 py-3 my-3 mx-3" style="width: 400px; height: auto">
+                <div>
+                    <p>
+                        <img class="float-left" style="height: 50px; width: 60px;" src="${tweet.user.profilePic}"/> 
+                        ${tweet.user.username} ${tweet.user.isVerified} <br>
+                        ${tweet.user.handle} 
+                    </p>
+                    <p style="display: inline-block";> ${tweet.text} </p>
+                    <hr>
+                    <p> ${tweet.likes} ${tweet.retweets} ${tweet.replies} </p>
+                </div>
+            </div>
+            `
+     }).join("")
+    return renderInfo;
+};
 
 function tweets() {
     var content = document.getElementById('content');
